@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR IN FOREX BY REHMAN ARSHAD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #c8f5e8 0%, #a8e6cf 25%, #88d8b0 50%, #6dd5a8 75%, #4ecdc4 100%);
+            min-height: 100vh; overflow-x: hidden; position: relative;
+        }
+        /* ===== CUSTOM CURSOR ===== */
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 99999; pointer-events: none; }
+        .cursor-dot { width: 8px; height: 8px; background: #0d5c3b; }
+        .cursor-outline { 
+            width: 40px; 
+            height: 40px; 
+            border: 2px solid rgba(13,92,59,0.3); 
+            background: rgba(46,204,113,0.15); 
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px); 
+            transition: width 0.15s ease, height 0.15s ease, border-color 0.15s ease, background 0.15s ease; 
+        }
+        body:hover .cursor-outline { width: 50px; height: 50px; }
+        .cursor-outline.hover { 
+            width: 60px; 
+            height: 60px; 
+            border-color: #2ecc71; 
+            background: rgba(46,204,113,0.25); 
+            backdrop-filter: blur(6px); 
+            -webkit-backdrop-filter: blur(6px); 
+        }
+        /* ===== ZOOM ON HOVER EFFECT ===== */
+        .zoom-box {
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center center;
+            will-change: transform;
+        }
+        .zoom-box:hover {
+            transform: scale(1.1) translateZ(0);
+            z-index: 100;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        /* ===== ANIMATED BACKGROUND WAVES ===== */
+        .bg-waves { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .wave { position: absolute; bottom: 0; left: 0; width: 200%; height: 200px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.15' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x; animation: waveMove 15s linear infinite; }
+        .wave:nth-child(2) { bottom: 10px; opacity: 0.5; animation: waveMove 20s linear infinite reverse; }
+        .wave:nth-child(3) { bottom: 20px; opacity: 0.3; animation: waveMove 25s linear infinite; }
+        @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .particle { position: absolute; width: 8px; height: 8px; background: rgba(255,255,255,0.4); border-radius: 50%; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; } }
+        .main-container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 20px; }
+        .header-section { text-align: center; padding: 40px 20px; margin-bottom: 30px; position: relative; }
+
+        /* ===== PRESS BUTTON - SMALL CIRCLE AT BOTTOM ===== */
+        .press-container-bottom { 
+            text-align: center; 
+            margin-top: 20px; 
+            padding: 15px; 
+            position: relative; 
+            z-index: 10; 
+        }
+        .press-btn-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e74c3c, #c0392b, #e74c3c);
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(231,76,60,0.4), 0 0 0 3px rgba(231,76,60,0.2);
+            animation: pressPulseCircle 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .press-btn-circle:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 30px rgba(231,76,60,0.6);
+        }
+        .press-btn-circle:active {
+            transform: scale(0.9);
+        }
+        @keyframes pressPulseCircle {
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(231,76,60,0.4); }
+            50% { transform: scale(1.1); box-shadow: 0 8px 25px rgba(231,76,60,0.6); }
+        }
+
+        /* ===== SMOKE BUTTON ===== */
+        .smoke-btn-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d, #95a5a6);
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(149,165,166,0.4), 0 0 0 3px rgba(149,165,166,0.2);
+            animation: smokePulse 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+        }
+        .smoke-btn-circle:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 30px rgba(149,165,166,0.6);
+        }
+        .smoke-btn-circle:active {
+            transform: scale(0.9);
+        }
+        .smoke-btn-circle.active {
+            background: linear-gradient(135deg, #2ecc71, #27ae60, #2ecc71);
+            box-shadow: 0 5px 20px rgba(46,204,113,0.4), 0 0 0 3px rgba(46,204,113,0.2);
+            animation: smokeActivePulse 1s ease-in-out infinite;
+        }
+        @keyframes smokePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(149,165,166,0.4); }
+            50% { transform: scale(1.1); box-shadow: 0 8px 25px rgba(149,165,166,0.6); }
+        }
+        @keyframes smokeActivePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 5px 20px rgba(46,204,113,0.4); }
+            50% { transform: scale(1.15); box-shadow: 0 10px 30px rgba(46,204,113,0.7); }
+        }
+
+        /* ===== MONEY RAIN EFFECT ===== */
+        .money-rain-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            display: none;
+            overflow: hidden;
+        }
+        .money-rain-container.active { display: block; }
+
+        .money-note {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: moneyFall linear forwards;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+            z-index: 9997;
+        }
+        @keyframes moneyFall {
+            0% { 
+                transform: translateY(-100px) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 1; 
+                transform: translateY(0) rotate(var(--r1)) scale(1); 
+            }
+            50% { 
+                transform: translateY(50vh) rotate(var(--r2)) scale(1); 
+            }
+            90% { 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(110vh) rotate(var(--r3)) scale(0.8); 
+                opacity: 0; 
+            }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px; height: 10px;
+            animation: confettiFall linear forwards;
+            z-index: 9996;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== SMOKE PARTICLES ===== */
+        .smoke-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            display: none;
+        }
+        .smoke-container.active { display: block; }
+
+        .smoke-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,200,200,0.6), rgba(150,150,150,0.3), transparent);
+            filter: blur(8px);
+            animation: smokeRise 4s ease-out forwards;
+            pointer-events: none;
+        }
+        @keyframes smokeRise {
+            0% { 
+                transform: translateY(0) translateX(0) scale(0.5); 
+                opacity: 0.8; 
+            }
+            25% { 
+                opacity: 0.6; 
+            }
+            50% { 
+                transform: translateY(-50vh) translateX(var(--sx)) scale(1.5); 
+                opacity: 0.4; 
+            }
+            100% { 
+                transform: translateY(-100vh) translateX(calc(var(--sx) * 2)) scale(2.5); 
+                opacity: 0; 
+            }
+        }
+
+        /* Fire Fox Animation */
+        .fire-fox-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+        .fire-fox-container.active { display: block; }
+
+        .fire-fox {
+            position: absolute;
+            animation: foxJump 3s ease-out forwards;
+            filter: drop-shadow(0 0 20px rgba(231,76,60,0.8));
+            z-index: 10000;
+        }
+        @keyframes foxJump {
+            0% { transform: translateY(100vh) scale(0) rotate(-180deg); opacity: 0; }
+            20% { transform: translateY(50vh) scale(1.2) rotate(0deg); opacity: 1; }
+            40% { transform: translateY(30vh) scale(1) rotate(10deg); opacity: 1; }
+            60% { transform: translateY(20vh) scale(1.1) rotate(-5deg); opacity: 1; }
+            80% { transform: translateY(10vh) scale(1) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-20vh) scale(0.5) rotate(180deg); opacity: 0; }
+        }
+
+        /* Trading Candles from Fox */
+        .trading-candle {
+            position: absolute;
+            width: 8px;
+            border-radius: 2px;
+            animation: candleFly 2.5s ease-out forwards;
+        }
+        .trading-candle.green {
+            background: linear-gradient(to top, #2ecc71, #27ae60);
+            box-shadow: 0 0 10px rgba(46,204,113,0.6);
+        }
+        .trading-candle.red {
+            background: linear-gradient(to top, #e74c3c, #c0392b);
+            box-shadow: 0 0 10px rgba(231,76,60,0.6);
+        }
+        .trading-candle::before {
+            content: '';
+            position: absolute;
+            left: 50%; transform: translateX(-50%);
+            width: 2px;
+            background: inherit;
+        }
+        .trading-candle.green::before { top: -8px; height: 8px; }
+        .trading-candle.red::before { bottom: -8px; height: 8px; }
+        @keyframes candleFly {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            20% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translate(calc(var(--tx) * 3), calc(var(--ty) * 3 - 200px)) scale(0.3); opacity: 0; }
+        }
+
+        /* Fire Particles */
+        .fire-particle {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: radial-gradient(circle, #f39c12, #e74c3c);
+            border-radius: 50%;
+            animation: fireFly 1.5s ease-out forwards;
+            box-shadow: 0 0 10px #f39c12;
+        }
+        @keyframes fireFly {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--fx), var(--fy)) scale(0); opacity: 0; }
+        }
+        .animated-title { font-size: 3.5rem; font-weight: 900; color: #0d5c3b; text-shadow: 3px 3px 6px rgba(0,0,0,0.15); animation: gentleBob 3s ease-in-out infinite; letter-spacing: 2px; line-height: 1.2; position: relative; display: inline-block; }
+        .animated-title::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #0d5c3b, transparent); animation: lineGlow 2s ease-in-out infinite; }
+        @keyframes lineGlow { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .animated-subtitle { font-size: 1.8rem; font-weight: 700; color: #1a7a52; margin-top: 15px; animation: gentleBob 3s ease-in-out infinite 0.5s; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        @keyframes gentleBob { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-8px) rotate(0.5deg); } 50% { transform: translateY(0) rotate(0deg); } 75% { transform: translateY(-5px) rotate(-0.5deg); } }
+        .content-box { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-bottom: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.5); border: 2px solid rgba(255,255,255,0.6); animation: slideUp 0.8s ease-out forwards; opacity: 0; transform: translateY(30px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
+        .content-box::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: left 0.6s ease; }
+        .content-box:hover::before { left: 100%; }
+        .content-box:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+        .content-box:nth-child(2) { animation-delay: 0.1s; }
+        .content-box:nth-child(3) { animation-delay: 0.2s; }
+        .content-box:nth-child(4) { animation-delay: 0.3s; }
+        .content-box:nth-child(5) { animation-delay: 0.4s; }
+        .content-box:nth-child(6) { animation-delay: 0.5s; }
+        .content-box:nth-child(7) { animation-delay: 0.6s; }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+        .box-heading { font-size: 1.6rem; font-weight: 800; color: #0d5c3b; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; animation: headingPulse 3s ease-in-out infinite; }
+        @keyframes headingPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        .box-heading::before { content: ''; width: 6px; height: 30px; background: linear-gradient(to bottom, #0d5c3b, #2ecc71); border-radius: 3px; animation: barGrow 2s ease-in-out infinite; }
+        @keyframes barGrow { 0%, 100% { height: 30px; } 50% { height: 40px; } }
+        .box-text { font-size: 1.05rem; color: #2c3e50; line-height: 1.8; font-weight: 400; }
+        .school-intro { font-size: 1.1rem; color: #2c3e50; line-height: 1.8; margin-bottom: 20px; font-weight: 500; }
+        .groups-container { display: flex; flex-direction: column; gap: 15px; }
+        .group-card { background: linear-gradient(135deg, #e8f8f0, #d4f1e0); border-radius: 15px; padding: 20px 25px; border-left: 5px solid #0d5c3b; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: default; position: relative; overflow: hidden; }
+        .group-card::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(13,92,59,0.05); border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.5s ease; }
+        .group-card:hover::after { width: 300px; height: 300px; }
+        .group-card:hover { transform: translateX(15px) scale(1.02); box-shadow: 0 10px 30px rgba(13,92,59,0.2); }
+        .group-number { display: inline-block; background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; width: 35px; height: 35px; border-radius: 50%; text-align: center; line-height: 35px; font-weight: 700; font-size: 1rem; margin-right: 10px; animation: numberBounce 2s ease-in-out infinite; box-shadow: 0 4px 15px rgba(13,92,59,0.3); }
+        @keyframes numberBounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+        .group-title { font-weight: 700; color: #0d5c3b; font-size: 1.1rem; }
+        .group-desc { color: #555; margin-top: 8px; margin-left: 45px; font-size: 0.95rem; }
+        .payment-section { margin: 20px 0; }
+        .payment-title { font-size: 1.3rem; font-weight: 700; color: #0d5c3b; text-align: center; margin-bottom: 20px; animation: titleGlow 2s ease-in-out infinite; }
+        @keyframes titleGlow { 0%, 100% { text-shadow: 0 0 5px rgba(13,92,59,0.2); } 50% { text-shadow: 0 0 20px rgba(13,92,59,0.4); } }
+        .payment-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .payment-card { background: linear-gradient(135deg, #ffffff, #f0f9f4); border-radius: 20px; padding: 25px 30px; min-width: 280px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 2px solid rgba(13,92,59,0.1); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; animation: cardFloat 3s ease-in-out infinite; }
+        .payment-card:nth-child(2) { animation-delay: 0.5s; }
+        @keyframes cardFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .payment-card:hover { transform: translateY(-12px) scale(1.05); box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .payment-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent); transform: rotate(45deg); transition: all 0.6s ease; opacity: 0; }
+        .payment-card:hover::before { animation: shine 0.6s ease forwards; }
+        @keyframes shine { 0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; } }
+        .payment-icon { font-size: 3rem; margin-bottom: 10px; animation: iconSpin 4s ease-in-out infinite; }
+        @keyframes iconSpin { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 75% { transform: rotate(-5deg); } }
+        .payment-name { font-size: 1.3rem; font-weight: 800; color: #0d5c3b; margin-bottom: 10px; }
+        .payment-number { font-size: 1.5rem; font-weight: 700; color: #1a7a52; font-family: 'Orbitron', monospace; letter-spacing: 2px; background: linear-gradient(135deg, #e8f8f0, #d4f1e0); padding: 10px 20px; border-radius: 10px; display: inline-block; margin-bottom: 15px; animation: numberGlow 2s ease-in-out infinite; }
+        @keyframes numberGlow { 0%, 100% { box-shadow: 0 0 5px rgba(13,92,59,0.2); } 50% { box-shadow: 0 0 20px rgba(13,92,59,0.4); } }
+        .copy-btn { background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; border: none; padding: 10px 25px; border-radius: 25px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); display: inline-flex; align-items: center; gap: 8px; animation: btnPulse 2s ease-in-out infinite; }
+        @keyframes btnPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .copy-btn:hover { transform: translateY(-3px) scale(1.1); box-shadow: 0 8px 25px rgba(13,92,59,0.4); }
+        .copy-btn.copied { background: linear-gradient(135deg, #2ecc71, #27ae60); animation: copiedPop 0.5s ease; }
+        @keyframes copiedPop { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; color: #0d5c3b; margin-bottom: 8px; font-size: 0.95rem; animation: labelSlide 0.5s ease forwards; }
+        @keyframes labelSlide { from { transform: translateX(-20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .form-group input[type="text"], .form-group input[type="number"], .form-group input[type="tel"], .form-group input[type="email"], .form-group input[type="file"] { width: 100%; padding: 14px 18px; border: 2px solid #b8e0d0; border-radius: 12px; font-size: 1rem; font-family: 'Poppins', sans-serif; background: rgba(255,255,255,0.9); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); outline: none; animation: inputSlide 0.6s ease forwards; }
+        @keyframes inputSlide { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .form-group input:focus { border-color: #0d5c3b; box-shadow: 0 0 0 4px rgba(13,92,59,0.1); transform: scale(1.02); }
+        .form-group input::placeholder { color: #aaa; }
+        .file-input-wrapper { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+        .file-input-wrapper input[type="file"] { cursor: pointer; }
+        .file-input-wrapper input[type="file"]::-webkit-file-upload-button { visibility: hidden; display: none; }
+        .file-input-wrapper::before { content: '📎 Choose Payment Screenshot'; position: absolute; left: 0; top: 0; width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.9); border: 2px solid #b8e0d0; border-radius: 12px; color: #aaa; font-family: 'Poppins', sans-serif; pointer-events: none; transition: all 0.3s ease; }
+        .file-input-wrapper.has-file::before { content: attr(data-filename); color: #0d5c3b; font-weight: 500; background: #e8f8f0; }
+        .fees-display { text-align: center; padding: 30px; margin: 25px 0; background: linear-gradient(135deg, #0d5c3b, #1a7a52, #2ecc71); border-radius: 20px; color: white; animation: feesPulse 2s ease-in-out infinite; position: relative; overflow: hidden; }
+        .fees-display::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); animation: feesShine 3s ease-in-out infinite; }
+        @keyframes feesShine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        @keyframes feesPulse { 0%, 100% { box-shadow: 0 0 20px rgba(13,92,59,0.3); transform: scale(1); } 50% { box-shadow: 0 0 40px rgba(13,92,59,0.5); transform: scale(1.02); } }
+        .fees-label { font-size: 1.1rem; font-weight: 400; opacity: 0.9; letter-spacing: 3px; text-transform: uppercase; }
+        .fees-amount { font-size: 3rem; font-weight: 900; margin-top: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); animation: amountBounce 2s ease-in-out infinite; }
+        @keyframes amountBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .register-btn { width: 100%; padding: 18px; font-size: 1.2rem; font-weight: 700; font-family: 'Poppins', sans-serif; border: none; border-radius: 15px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 1px; position: relative; overflow: hidden; }
+        .register-btn:disabled { background: #ccc; color: #888; cursor: not-allowed; transform: none; animation: none; }
+        .register-btn:not(:disabled) { background: linear-gradient(135deg, #0d5c3b, #1a7a52, #2ecc71); color: white; animation: btnPulse 2s ease-in-out infinite; }
+        .register-btn:not(:disabled):hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(13,92,59,0.4); }
+        .register-btn:not(:disabled)::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent); animation: btnShine 3s ease-in-out infinite; }
+        @keyframes btnShine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        @keyframes btnPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+        .admin-section { text-align: center; margin-top: 30px; padding: 20px; }
+        .admin-btn { background: linear-gradient(135deg, #2c3e50, #34495e, #4a5568); color: white; padding: 15px 40px; font-size: 1rem; font-weight: 600; font-family: 'Poppins', sans-serif; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); letter-spacing: 1px; position: relative; overflow: hidden; animation: adminGlow 3s ease-in-out infinite; }
+        @keyframes adminGlow { 0%, 100% { box-shadow: 0 0 10px rgba(44,62,80,0.3); } 50% { box-shadow: 0 0 30px rgba(44,62,80,0.6); } }
+        .admin-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 30px rgba(44,62,80,0.5); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content { background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: modalSlide 0.4s ease; }
+        @keyframes modalSlide { from { transform: translateY(-50px) scale(0.9); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+        .modal-title { font-size: 1.3rem; font-weight: 700; color: #0d5c3b; margin-bottom: 20px; animation: titleBounce 1s ease; }
+        @keyframes titleBounce { 0% { transform: scale(0); } 60% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .password-input { width: 100%; padding: 14px; border: 2px solid #b8e0d0; border-radius: 12px; font-size: 1rem; font-family: 'Poppins', sans-serif; margin-bottom: 15px; text-align: center; letter-spacing: 2px; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .password-input:focus { border-color: #0d5c3b; box-shadow: 0 0 0 4px rgba(13,92,59,0.1); outline: none; }
+        .modal-btn { padding: 12px 30px; font-size: 1rem; font-weight: 600; font-family: 'Poppins', sans-serif; border: none; border-radius: 10px; cursor: pointer; margin: 5px; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .modal-btn-primary { background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; }
+        .modal-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(13,92,59,0.3); }
+        .modal-btn-secondary { background: #e0e0e0; color: #555; }
+        .modal-btn-secondary:hover { background: #d0d0d0; }
+        .error-msg { color: #e74c3c; font-size: 0.9rem; margin-top: 10px; display: none; animation: shake 0.5s ease; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+        .admin-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #c8f5e8 0%, #a8e6cf 50%, #88d8b0 100%); z-index: 2000; overflow-y: auto; padding: 20px; }
+        .admin-page.active { display: block; animation: adminSlideIn 0.6s ease; }
+        @keyframes adminSlideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        .admin-header { text-align: center; padding: 30px 20px; animation: welcomeDrop 0.8s ease; }
+        @keyframes welcomeDrop { 0% { transform: translateY(-100px); opacity: 0; } 60% { transform: translateY(20px); opacity: 1; } 80% { transform: translateY(-5px); } 100% { transform: translateY(0); } }
+        .admin-welcome { font-size: 2.2rem; font-weight: 900; color: #0d5c3b; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); animation: welcomeGlow 2s ease-in-out infinite; }
+        @keyframes welcomeGlow { 0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); } 50% { text-shadow: 2px 2px 20px rgba(13,92,59,0.3); } }
+        .admin-container { max-width: 1100px; margin: 0 auto; padding-bottom: 50px; }
+        .admin-nav { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        .admin-nav-btn { padding: 12px 25px; font-size: 0.95rem; font-weight: 600; font-family: 'Poppins', sans-serif; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: white; color: #0d5c3b; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+        .admin-nav-btn.active { background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; animation: navPulse 2s ease-in-out infinite; }
+        @keyframes navPulse { 0%, 100% { box-shadow: 0 4px 15px rgba(13,92,59,0.2); } 50% { box-shadow: 0 4px 25px rgba(13,92,59,0.4); } }
+        .admin-nav-btn:hover { transform: translateY(-2px); }
+        .admin-section-panel { display: none; }
+        .admin-section-panel.active { display: block; animation: fadeIn 0.4s ease; }
+        .section-title { font-size: 1.5rem; font-weight: 800; color: #0d5c3b; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; animation: titleSlide 0.5s ease; }
+        @keyframes titleSlide { from { transform: translateX(-30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .badge { background: #e74c3c; color: white; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; animation: badgePulse 2s ease-in-out infinite; }
+        @keyframes badgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .badge.green { background: #2ecc71; }
+        .student-grid { display: grid; gap: 20px; }
+        .student-card { background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 2px solid transparent; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; animation: cardSlideUp 0.5s ease forwards; }
+        @keyframes cardSlideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .student-card:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        .student-card.expired { border-color: #e74c3c; background: linear-gradient(135deg, #fff5f5, #ffe0e0); animation: expiredPulse 2s ease-in-out infinite; }
+        @keyframes expiredPulse { 0%, 100% { box-shadow: 0 5px 20px rgba(231,76,60,0.1); } 50% { box-shadow: 0 5px 30px rgba(231,76,60,0.3); } }
+        .student-card.expired::after { content: 'EXPIRED'; position: absolute; top: 10px; right: -30px; background: #e74c3c; color: white; padding: 5px 40px; font-size: 0.75rem; font-weight: 700; transform: rotate(45deg); animation: expiredBadge 1s ease; }
+        @keyframes expiredBadge { from { transform: rotate(45deg) translateX(100px); opacity: 0; } to { transform: rotate(45deg) translateX(0); opacity: 1; } }
+        .student-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .student-name { font-size: 1.2rem; font-weight: 700; color: #0d5c3b; }
+        .student-status { padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; animation: statusPulse 2s ease-in-out infinite; }
+        @keyframes statusPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .status-pending { background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
+        .status-active { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
+        .status-expired { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .student-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .detail-item { font-size: 0.9rem; color: #555; padding: 5px 10px; background: rgba(13,92,59,0.05); border-radius: 8px; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .detail-item:hover { background: rgba(13,92,59,0.1); transform: translateX(5px); }
+        .detail-item strong { color: #0d5c3b; }
+        .days-remaining { font-size: 1rem; font-weight: 700; padding: 8px 15px; border-radius: 10px; display: inline-block; margin-top: 10px; animation: daysPulse 2s ease-in-out infinite; }
+        @keyframes daysPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .days-green { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
+        .days-yellow { background: linear-gradient(135deg, #fff3cd, #ffeeba); color: #856404; }
+        .days-red { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
+        .action-btns { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .action-btn { padding: 10px 20px; font-size: 0.9rem; font-weight: 600; font-family: 'Poppins', sans-serif; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
+        .action-btn:hover { transform: translateY(-2px) scale(1.05); }
+        .btn-approve { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
+        .btn-approve:hover { box-shadow: 0 5px 20px rgba(46,204,113,0.4); }
+        .btn-reject { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .btn-reject:hover { box-shadow: 0 5px 20px rgba(231,76,60,0.4); }
+        .btn-delete { background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; }
+        .btn-delete:hover { box-shadow: 0 5px 20px rgba(149,165,166,0.4); }
+        .btn-renew { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .btn-renew:hover { box-shadow: 0 5px 20px rgba(52,152,219,0.4); }
+        .btn-view { background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; }
+        .btn-view:hover { box-shadow: 0 5px 20px rgba(155,89,182,0.4); }
+        .empty-state { text-align: center; padding: 60px 20px; color: #888; animation: emptyFloat 3s ease-in-out infinite; }
+        @keyframes emptyFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 15px; animation: iconBounce 2s ease-in-out infinite; }
+        @keyframes iconBounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .back-btn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; padding: 15px 25px; border: none; border-radius: 50px; font-size: 1rem; font-weight: 600; font-family: 'Poppins', sans-serif; cursor: pointer; box-shadow: 0 5px 20px rgba(13,92,59,0.4); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 3000; animation: backBtnPulse 2s ease-in-out infinite; }
+        @keyframes backBtnPulse { 0%, 100% { box-shadow: 0 5px 20px rgba(13,92,59,0.4); } 50% { box-shadow: 0 5px 30px rgba(13,92,59,0.6); } }
+        .back-btn:hover { transform: translateY(-3px) scale(1.05); }
+        .success-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 5000; justify-content: center; align-items: center; }
+        .success-overlay.active { display: flex; }
+        .success-box { background: white; padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; animation: successPop 0.5s ease; }
+        @keyframes successPop { 0% { transform: scale(0.5) rotate(-10deg); opacity: 0; } 60% { transform: scale(1.1) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+        .success-icon { font-size: 4rem; margin-bottom: 15px; animation: successIcon 1s ease infinite; }
+        @keyframes successIcon { 0%, 100% { transform: scale(1) rotate(0deg); } 25% { transform: scale(1.2) rotate(-10deg); } 75% { transform: scale(1.2) rotate(10deg); } }
+        .success-title { font-size: 1.5rem; font-weight: 800; color: #0d5c3b; margin-bottom: 10px; }
+        .success-text { color: #555; margin-bottom: 20px; }
+        .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(100px); background: linear-gradient(135deg, #0d5c3b, #2ecc71); color: white; padding: 15px 30px; border-radius: 50px; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 6000; opacity: 0; transition: all 0.4s ease; pointer-events: none; }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        /* ===== SCREENSHOT MODAL ===== */
+        .screenshot-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 7000; justify-content: center; align-items: center; padding: 20px; }
+        .screenshot-modal.active { display: flex; animation: fadeIn 0.3s ease; }
+        .screenshot-content { background: white; border-radius: 20px; padding: 30px; max-width: 600px; width: 100%; text-align: center; position: relative; }
+        .screenshot-content img { max-width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .screenshot-title { font-size: 1.3rem; font-weight: 700; color: #0d5c3b; margin-bottom: 15px; }
+        .screenshot-student { font-size: 1rem; color: #555; margin-bottom: 20px; }
+        .screenshot-close { position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; }
+        .screenshot-close:hover { transform: scale(1.1); background: #c0392b; }
+        @media (max-width: 600px) { .animated-title { font-size: 2rem; } .animated-subtitle { font-size: 1.2rem; } .content-box { padding: 20px; } .admin-welcome { font-size: 1.5rem; } .student-details { grid-template-columns: 1fr; } .payment-cards { flex-direction: column; align-items: center; } .payment-card { min-width: 100%; } .cursor-dot, .cursor-outline { display: none; } .zoom-box:hover { transform: scale(1.05); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.3); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #0d5c3b, #2ecc71); border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+    <div class="bg-waves"><div class="wave"></div><div class="wave"></div><div class="wave"></div></div>
+    <div class="particles" id="particles"></div>
+    <div class="toast" id="toast"></div>
+    <div id="publicPage">
+        <div class="main-container">
+            <div class="header-section">
+                <div class="animated-title">ERROR IN FOREX</div>
+                <div class="animated-subtitle">BY REHMAN ARSHAD</div>
+            </div>
+
+            <!-- Fire Fox Animation Container -->
+            <div class="fire-fox-container" id="fireFoxContainer"></div>
+
+            <!-- Smoke Animation Container -->
+            <div class="smoke-container" id="smokeContainer"></div>
+
+            <!-- Money Rain Container -->
+            <div class="money-rain-container" id="moneyRainContainer"></div>
+            <div class="content-box zoom-box">
+                <div class="box-heading">ABOUT ME</div>
+                <div class="box-text">Hi, I'm Rehman Arshad, a passionate trader with years of experience in the financial markets. I've dedicated my journey to mastering trading and helping others understand the market with clarity, discipline, and confidence.</div>
+            </div>
+            <div class="content-box zoom-box">
+                <div class="box-heading">MY CONCEPTS</div>
+                <div class="box-text">I am deeply familiar with the ICT (Inner Circle Trader) methodology and have spent years studying and decoding its concepts. My goal is to simplify Michael Huddleston's ICT teachings and present them in a clear, practical, and easy-to-understand way, so that every trader can learn with confidence and apply the concepts effectively in real market conditions.</div>
+            </div>
+            <div class="content-box zoom-box">
+                <div class="box-heading">ONLINE TRADING SCHOOL</div>
+                <div class="school-intro">We made a very well setup for beginners in trading career. We made three main groups in our private and online school:</div>
+                <div class="groups-container">
+                    <div class="group-card zoom-box"><span class="group-number">1</span><span class="group-title">MAIN EIF GROUP</span><div class="group-desc">For Announcements and Latest Information</div></div>
+                    <div class="group-card zoom-box"><span class="group-number">2</span><span class="group-title">ASSIGNMENTS GROUP</span><div class="group-desc">You will share me daily assignments, I will check and I will inform you about your mistakes.</div></div>
+                    <div class="group-card zoom-box"><span class="group-number">3</span><span class="group-title">DISCUSSION GROUP</span><div class="group-desc">For Discussion between Students 24/7 open for every private student.</div></div>
+                </div>
+            </div>
+            <div class="content-box zoom-box">
+                <div class="box-heading">PAYMENT METHODS</div>
+                <div class="payment-section">
+                    <div class="payment-title">💳 Send Payment To</div>
+                    <div class="payment-cards">
+                        <div class="payment-card zoom-box">
+                            <div class="payment-icon">📱</div>
+                            <div class="payment-name">JAZZ CASH</div>
+                            <div class="payment-number" id="jazzNumber">03003692731</div>
+                            <button class="copy-btn" onclick="copyNumber('03003692731', this)">📋 Copy Number</button>
+                        </div>
+                        <div class="payment-card zoom-box">
+                            <div class="payment-icon">💰</div>
+                            <div class="payment-name">EASYPAISA</div>
+                            <div class="payment-number" id="easyNumber">03003692731</div>
+                            <button class="copy-btn" onclick="copyNumber('03003692731', this)">📋 Copy Number</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-box zoom-box">
+                <div class="box-heading">REGISTRATION FORM</div>
+                <form id="registrationForm">
+                    <div class="form-group"><label for="regName">Full Name</label><input type="text" id="regName" placeholder="Enter your full name" required></div>
+                    <div class="form-group"><label for="regAge">Age</label><input type="number" id="regAge" placeholder="Enter your age" min="10" max="100" required></div>
+                    <div class="form-group"><label for="regContact">Contact Number</label><input type="tel" id="regContact" placeholder="Enter your contact number" required></div>
+                    <div class="form-group"><label for="regEmail">G-Mail</label><input type="email" id="regEmail" placeholder="Enter your email address" required></div>
+                    <div class="form-group"><label for="regScreenshot">Payment Screenshot</label><div class="file-input-wrapper" id="fileWrapper"><input type="file" id="regScreenshot" accept="image/*" required></div></div>
+                    <div class="fees-display"><div class="fees-label">MONTHLY FEES</div><div class="fees-amount">4000 PKR</div></div>
+                    <button type="submit" class="register-btn" id="registerBtn" disabled>REGISTER NOW</button>
+                </form>
+            </div>
+            <div class="admin-section">
+                <button class="admin-btn" onclick="openAdminModal()">🔐 ADMIN ACCESS - JUST FOR REHMAN ARSHAD</button>
+            </div>
+            <div class="press-container-bottom">
+                <button class="press-btn-circle" id="pressBtn" onclick="launchFireFox()" title="Click for Fire Fox!">🔥</button>
+                <button class="smoke-btn-circle" id="smokeBtn" onclick="toggleSmoke()" title="Toggle Smoke!">💨</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-title">🔐 Admin Access</div>
+            <input type="password" class="password-input" id="adminPassword" placeholder="Enter Password">
+            <div><button class="modal-btn modal-btn-primary" onclick="verifyAdmin()">Unlock</button><button class="modal-btn modal-btn-secondary" onclick="closeAdminModal()">Cancel</button></div>
+            <div class="error-msg" id="passwordError">❌ Wrong Password! Try Again.</div>
+        </div>
+    </div>
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-box">
+            <div class="success-icon">🎉</div>
+            <div class="success-title">Registration Submitted!</div>
+            <div class="success-text">Your application is pending approval. We will contact you soon!</div>
+            <button class="modal-btn modal-btn-primary" onclick="closeSuccess()">OK</button>
+        </div>
+    </div>
+    <!-- Screenshot Review Modal -->
+    <div class="screenshot-modal" id="screenshotModal">
+        <div class="screenshot-content">
+            <button class="screenshot-close" onclick="closeScreenshotModal()">✕</button>
+            <div class="screenshot-title" id="screenshotTitle">📸 Payment Screenshot</div>
+            <div class="screenshot-student" id="screenshotStudent"></div>
+            <img id="screenshotImage" src="" alt="Payment Screenshot">
+        </div>
+    </div>
+    <div class="admin-page" id="adminPage">
+        <div class="admin-container">
+            <div class="admin-header"><div class="admin-welcome">WELCOME DEAR ADMIN REHMAN ARSHAD</div></div>
+            <div class="admin-nav">
+                <button class="admin-nav-btn active" onclick="showAdminSection('pending')">📋 Approvals Pending <span class="badge" id="pendingCount">0</span></button>
+                <button class="admin-nav-btn" onclick="showAdminSection('students')">👥 Students Dashboard <span class="badge green" id="studentsCount">0</span></button>
+            </div>
+            <div class="admin-section-panel active" id="pendingSection">
+                <div class="section-title">📋 APPROVALS PENDING</div>
+                <div class="student-grid" id="pendingList"><div class="empty-state"><div class="empty-state-icon">📭</div><div>No pending registrations at the moment.</div></div></div>
+            </div>
+            <div class="admin-section-panel" id="studentsSection">
+                <div class="section-title">👥 STUDENTS DASHBOARD</div>
+                <div class="student-grid" id="studentsList"><div class="empty-state"><div class="empty-state-icon">👤</div><div>No approved students yet.</div></div></div>
+            </div>
+        </div>
+        <button class="back-btn" onclick="logoutAdmin()">⬅ Back to Website</button>
+    </div>
+    <script>
+        // ===== CUSTOM CURSOR 120 FPS =====
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorOutline = document.getElementById('cursorOutline');
+        let mouseX = 0, mouseY = 0;
+        let dotX = 0, dotY = 0;
+        let outlineX = 0, outlineY = 0;
+        let isActive = true;
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; if (!isActive) { isActive = true; animateCursor(); } });
+        document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; cursorOutline.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; cursorOutline.style.opacity = '1'; });
+        const interactiveElements = document.querySelectorAll('button, input, .content-box, .group-card, .payment-card, .student-card, .admin-nav-btn, .action-btn, .copy-btn');
+        interactiveElements.forEach(el => { el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover')); el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover')); });
+        function animateCursor() { if (!isActive) return; dotX += (mouseX - dotX) * 0.5; dotY += (mouseY - dotY) * 0.5; cursorDot.style.left = dotX + 'px'; cursorDot.style.top = dotY + 'px'; outlineX += (mouseX - outlineX) * 0.15; outlineY += (mouseY - outlineY) * 0.15; cursorOutline.style.left = outlineX + 'px'; cursorOutline.style.top = outlineY + 'px'; requestAnimationFrame(animateCursor); }
+        animateCursor();
+        // ===== SMOKE TOGGLE =====
+        let smokeInterval = null;
+        let isSmokeActive = false;
+
+        function toggleSmoke() {
+            const btn = document.getElementById('smokeBtn');
+            const container = document.getElementById('smokeContainer');
+
+            if (isSmokeActive) {
+                // Stop smoke
+                isSmokeActive = false;
+                btn.classList.remove('active');
+                container.classList.remove('active');
+                if (smokeInterval) {
+                    clearInterval(smokeInterval);
+                    smokeInterval = null;
+                }
+                container.innerHTML = '';
+            } else {
+                // Start smoke
+                isSmokeActive = true;
+                btn.classList.add('active');
+                container.classList.add('active');
+
+                // Create smoke particles continuously
+                smokeInterval = setInterval(() => {
+                    createSmokeParticles();
+                }, 200);
+
+                // Initial burst
+                createSmokeParticles();
+                createSmokeParticles();
+                createSmokeParticles();
+            }
+        }
+
+        function createSmokeParticles() {
+            const container = document.getElementById('smokeContainer');
+            const particleCount = 3 + Math.floor(Math.random() * 4);
+
+            for (let i = 0; i < particleCount; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+
+                // Random starting position from bottom
+                const startX = 10 + Math.random() * 80;
+                smoke.style.left = startX + '%';
+                smoke.style.bottom = '-50px';
+
+                // Random size
+                const size = 30 + Math.random() * 60;
+                smoke.style.width = size + 'px';
+                smoke.style.height = size + 'px';
+
+                // Random horizontal drift
+                const drift = (Math.random() - 0.5) * 200;
+                smoke.style.setProperty('--sx', drift + 'px');
+
+                // Random animation duration
+                smoke.style.animationDuration = (3 + Math.random() * 2) + 's';
+
+                container.appendChild(smoke);
+
+                // Remove after animation
+                setTimeout(() => {
+                    if (smoke.parentNode) {
+                        smoke.parentNode.removeChild(smoke);
+                    }
+                }, 5000);
+            }
+        }
+
+        // ===== MONEY RAIN EFFECT =====
+        function startMoneyRain() {
+            const container = document.getElementById('moneyRainContainer');
+            container.innerHTML = '';
+            container.classList.add('active');
+
+            // Play clapping sound
+            playClappingSound();
+
+            // Create money notes
+            const moneyEmojis = ['💵', '💴', '💶', '💷', '💰', '💸', '🤑'];
+            const colors = ['#e74c3c', '#f39c12', '#2ecc71', '#3498db', '#9b59b6', '#e67e22'];
+
+            // Money notes
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const note = document.createElement('div');
+                    note.className = 'money-note';
+                    note.textContent = moneyEmojis[Math.floor(Math.random() * moneyEmojis.length)];
+                    note.style.left = Math.random() * 100 + '%';
+                    note.style.animationDuration = (3 + Math.random() * 3) + 's';
+                    note.style.animationDelay = (Math.random() * 0.5) + 's';
+
+                    const r1 = (Math.random() - 0.5) * 360;
+                    const r2 = (Math.random() - 0.5) * 720;
+                    const r3 = (Math.random() - 0.5) * 1080;
+                    note.style.setProperty('--r1', r1 + 'deg');
+                    note.style.setProperty('--r2', r2 + 'deg');
+                    note.style.setProperty('--r3', r3 + 'deg');
+
+                    note.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+
+                    container.appendChild(note);
+
+                    setTimeout(() => {
+                        if (note.parentNode) note.parentNode.removeChild(note);
+                    }, 6000);
+                }, i * 80);
+            }
+
+            // Confetti pieces
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = (5 + Math.random() * 10) + 'px';
+                    confetti.style.height = (5 + Math.random() * 10) + 'px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+
+                    container.appendChild(confetti);
+
+                    setTimeout(() => {
+                        if (confetti.parentNode) confetti.parentNode.removeChild(confetti);
+                    }, 5000);
+                }, i * 50);
+            }
+
+            // Stop after 5 seconds
+            setTimeout(() => {
+                container.classList.remove('active');
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        // ===== CLAPPING SOUND =====
+        function playClappingSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // Create multiple claps
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        // Clap noise
+                        const bufferSize = audioContext.sampleRate * 0.1;
+                        const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                        const data = buffer.getChannelData(0);
+
+                        for (let j = 0; j < bufferSize; j++) {
+                            data[j] = (Math.random() * 2 - 1) * Math.exp(-j / (bufferSize * 0.1));
+                        }
+
+                        const noise = audioContext.createBufferSource();
+                        noise.buffer = buffer;
+
+                        const filter = audioContext.createBiquadFilter();
+                        filter.type = 'bandpass';
+                        filter.frequency.value = 2000 + Math.random() * 1000;
+                        filter.Q.value = 1;
+
+                        const gain = audioContext.createGain();
+                        gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+
+                        noise.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(audioContext.destination);
+
+                        noise.start();
+                        noise.stop(audioContext.currentTime + 0.1);
+                    }, i * 150 + Math.random() * 100);
+                }
+
+                // Add some cheering
+                setTimeout(() => {
+                    const osc = audioContext.createOscillator();
+                    const cheerGain = audioContext.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(400, audioContext.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+                    cheerGain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    cheerGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    osc.connect(cheerGain);
+                    cheerGain.connect(audioContext.destination);
+                    osc.start();
+                    osc.stop(audioContext.currentTime + 0.5);
+                }, 200);
+
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        // ===== FIRE FOX LAUNCH =====
+        function launchFireFox() {
+            const container = document.getElementById('fireFoxContainer');
+            container.innerHTML = '';
+            container.classList.add('active');
+
+            // Play fire sound (using Web Audio API for a simple fire crackle)
+            playFireSound();
+
+            // Create multiple fire foxes
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFireFox(container);
+                }, i * 300);
+            }
+
+            // Hide container after animation
+            setTimeout(() => {
+                container.classList.remove('active');
+                container.innerHTML = '';
+            }, 4000);
+        }
+
+        function createFireFox(container) {
+            const fox = document.createElement('div');
+            fox.className = 'fire-fox';
+
+            // Create text-based fox with ERROR IN FOREX BY REHMAN ARSHAD
+            const words = ['ERROR', 'IN', 'FOREX', 'BY', 'REHMAN', 'ARSHAD'];
+            const word = words[Math.floor(Math.random() * words.length)];
+
+            fox.innerHTML = '<div style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 1.2rem; color: #e74c3c; text-shadow: 0 0 20px rgba(231,76,60,0.8), 0 0 40px rgba(231,76,60,0.4); background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 10px; border: 2px solid #e74c3c; white-space: nowrap;">' + word + '</div>';
+
+            fox.style.left = (20 + Math.random() * 60) + '%';
+            fox.style.animationDelay = '0s';
+            container.appendChild(fox);
+
+            // Create trading candles from fox
+            setTimeout(() => {
+                createTradingCandles(container, fox);
+            }, 500);
+
+            // Create fire particles
+            setTimeout(() => {
+                createFireParticles(container, fox);
+            }, 200);
+        }
+
+        function createTradingCandles(container, fox) {
+            const rect = fox.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 15; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'trading-candle ' + (Math.random() > 0.5 ? 'green' : 'red');
+                candle.style.left = centerX + 'px';
+                candle.style.top = centerY + 'px';
+                candle.style.height = (15 + Math.random() * 30) + 'px';
+
+                const angle = (Math.PI * 2 / 15) * i + Math.random() * 0.5;
+                const distance = 50 + Math.random() * 150;
+                candle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                candle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                candle.style.animationDelay = (Math.random() * 0.3) + 's';
+
+                container.appendChild(candle);
+            }
+        }
+
+        function createFireParticles(container, fox) {
+            const rect = fox.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'fire-particle';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 30 + Math.random() * 100;
+                particle.style.setProperty('--fx', Math.cos(angle) * distance + 'px');
+                particle.style.setProperty('--fy', Math.sin(angle) * distance - 50 + 'px');
+                particle.style.animationDelay = (Math.random() * 0.5) + 's';
+
+                container.appendChild(particle);
+            }
+        }
+
+        // ===== FIRE SOUND EFFECT =====
+        function playFireSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // Create noise for fire crackle
+                const bufferSize = audioContext.sampleRate * 2;
+                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                const data = buffer.getChannelData(0);
+
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = (Math.random() * 2 - 1) * 0.3;
+                }
+
+                const noise = audioContext.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = audioContext.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 1000;
+
+                const gain = audioContext.createGain();
+                gain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(audioContext.destination);
+
+                noise.start();
+                noise.stop(audioContext.currentTime + 2);
+
+                // Add some popping sounds
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const osc = audioContext.createOscillator();
+                        const popGain = audioContext.createGain();
+                        osc.frequency.value = 200 + Math.random() * 400;
+                        popGain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                        popGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                        osc.connect(popGain);
+                        popGain.connect(audioContext.destination);
+                        osc.start();
+                        osc.stop(audioContext.currentTime + 0.1);
+                    }, i * 200);
+                }
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        function createParticles() { const container = document.getElementById('particles'); for (let i = 0; i < 40; i++) { const p = document.createElement('div'); p.className = 'particle'; p.style.left = Math.random() * 100 + '%'; p.style.animationDuration = (Math.random() * 12 + 6) + 's'; p.style.animationDelay = (Math.random() * 12) + 's'; p.style.width = (Math.random() * 12 + 4) + 'px'; p.style.height = p.style.width; p.style.opacity = Math.random() * 0.5 + 0.2; container.appendChild(p); } }
+        createParticles();
+        function showToast(message) { const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); }, 2500); }
+        function copyNumber(number, btn) { if (navigator.clipboard) { navigator.clipboard.writeText(number).then(() => { btn.classList.add('copied'); btn.innerHTML = '✅ Copied!'; showToast('📋 Number copied to clipboard!'); setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '📋 Copy Number'; }, 2000); }).catch(() => fallbackCopy(number, btn)); } else { fallbackCopy(number, btn); } }
+        function fallbackCopy(number, btn) { const textArea = document.createElement('textarea'); textArea.value = number; document.body.appendChild(textArea); textArea.select(); document.execCommand('copy'); document.body.removeChild(textArea); btn.classList.add('copied'); btn.innerHTML = '✅ Copied!'; showToast('📋 Number copied to clipboard!'); setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '📋 Copy Number'; }, 2000); }
+        const ADMIN_PASSWORD = 'Manikhan324671793$';
+        function getStudents() { const data = localStorage.getItem('eif_students'); return data ? JSON.parse(data) : []; }
+        function saveStudents(students) { localStorage.setItem('eif_students', JSON.stringify(students)); }
+        function getPending() { const data = localStorage.getItem('eif_pending'); return data ? JSON.parse(data) : []; }
+        function savePending(pending) { localStorage.setItem('eif_pending', JSON.stringify(pending)); }
+        const form = document.getElementById('registrationForm');
+        const registerBtn = document.getElementById('registerBtn');
+        const fileWrapper = document.getElementById('fileWrapper');
+        const fileInput = document.getElementById('regScreenshot');
+        function checkFormValidity() { const name = document.getElementById('regName').value.trim(); const age = document.getElementById('regAge').value.trim(); const contact = document.getElementById('regContact').value.trim(); const email = document.getElementById('regEmail').value.trim(); const file = fileInput.files.length > 0; registerBtn.disabled = !(name && age && contact && email && file); }
+        ['regName','regAge','regContact','regEmail'].forEach(id => { document.getElementById(id).addEventListener('input', checkFormValidity); });
+        fileInput.addEventListener('change', function() { if (this.files.length > 0) { fileWrapper.classList.add('has-file'); fileWrapper.setAttribute('data-filename', '📷 ' + this.files[0].name); const reader = new FileReader(); reader.onload = function(e) { window.lastScreenshot = e.target.result; }; reader.readAsDataURL(this.files[0]); } else { fileWrapper.classList.remove('has-file'); } checkFormValidity(); });
+        form.addEventListener('submit', function(e) { e.preventDefault(); const student = { id: Date.now(), name: document.getElementById('regName').value.trim(), age: document.getElementById('regAge').value.trim(), contact: document.getElementById('regContact').value.trim(), email: document.getElementById('regEmail').value.trim(), screenshot: fileInput.files[0] ? fileInput.files[0].name : 'screenshot.jpg', screenshotData: window.lastScreenshot || '', registeredDate: new Date().toISOString(), status: 'pending' }; const pending = getPending(); pending.push(student); savePending(pending); 
+            // Trigger money rain and clapping
+            startMoneyRain();
+            document.getElementById('successOverlay').classList.add('active'); form.reset(); fileWrapper.classList.remove('has-file'); window.lastScreenshot = ''; registerBtn.disabled = true; });
+        function closeSuccess() { document.getElementById('successOverlay').classList.remove('active'); }
+        function openAdminModal() { document.getElementById('adminModal').classList.add('active'); document.getElementById('adminPassword').value = ''; document.getElementById('passwordError').style.display = 'none'; setTimeout(() => document.getElementById('adminPassword').focus(), 100); }
+        function closeAdminModal() { document.getElementById('adminModal').classList.remove('active'); }
+        function verifyAdmin() { const input = document.getElementById('adminPassword').value; if (input === ADMIN_PASSWORD) { closeAdminModal(); document.getElementById('adminPage').classList.add('active'); renderAdminDashboard(); } else { document.getElementById('passwordError').style.display = 'block'; document.getElementById('adminPassword').value = ''; } }
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) { if (e.key === 'Enter') verifyAdmin(); });
+        function logoutAdmin() { document.getElementById('adminPage').classList.remove('active'); }
+        function showAdminSection(section) { document.querySelectorAll('.admin-section-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active')); if (section === 'pending') { document.getElementById('pendingSection').classList.add('active'); document.querySelectorAll('.admin-nav-btn')[0].classList.add('active'); } else { document.getElementById('studentsSection').classList.add('active'); document.querySelectorAll('.admin-nav-btn')[1].classList.add('active'); } }
+        function getDaysRemaining(registeredDate) { const reg = new Date(registeredDate); const now = new Date(); const diffTime = now - reg; const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); return Math.max(0, 30 - diffDays); }
+        function isExpired(registeredDate) { return getDaysRemaining(registeredDate) <= 0; }
+        // ===== SCREENSHOT REVIEW =====
+        function viewScreenshot(studentId, isPending) {
+            const list = isPending ? getPending() : getStudents();
+            const student = list.find(s => s.id === studentId);
+            if (student && student.screenshotData) {
+                document.getElementById('screenshotStudent').textContent = 'Student: ' + student.name + ' | Contact: ' + student.contact;
+                document.getElementById('screenshotImage').src = student.screenshotData;
+                document.getElementById('screenshotModal').classList.add('active');
+            } else {
+                showToast('📷 No screenshot available for this student');
+            }
+        }
+        function closeScreenshotModal() { document.getElementById('screenshotModal').classList.remove('active'); }
+        document.getElementById('screenshotModal').addEventListener('click', function(e) { if (e.target === this) closeScreenshotModal(); });
+        function renderAdminDashboard() { const pending = getPending(); const students = getStudents(); document.getElementById('pendingCount').textContent = pending.length; document.getElementById('studentsCount').textContent = students.length; const pendingList = document.getElementById('pendingList'); if (pending.length === 0) { pendingList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><div>No pending registrations at the moment.</div></div>'; } else { pendingList.innerHTML = pending.map((s, i) => '<div class="student-card zoom-box" style="animation-delay: ' + (i * 0.1) + 's"><div class="student-header"><div class="student-name">' + s.name + '</div><span class="student-status status-pending">PENDING</span></div><div class="student-details"><div class="detail-item"><strong>Age:</strong> ' + s.age + '</div><div class="detail-item"><strong>Contact:</strong> ' + s.contact + '</div><div class="detail-item"><strong>Email:</strong> ' + s.email + '</div><div class="detail-item"><strong>Date:</strong> ' + new Date(s.registeredDate).toLocaleDateString() + '</div></div><div class="action-btns"><button class="action-btn btn-view" onclick="viewScreenshot(' + s.id + ', true)">📸 View Screenshot</button><button class="action-btn btn-approve" onclick="approveStudent(' + s.id + ')">✅ Approve</button><button class="action-btn btn-reject" onclick="rejectStudent(' + s.id + ')">❌ Reject</button></div></div>').join(''); } const studentsList = document.getElementById('studentsList'); if (students.length === 0) { studentsList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">👤</div><div>No approved students yet.</div></div>'; } else { studentsList.innerHTML = students.map((s, i) => { const daysLeft = getDaysRemaining(s.approvedDate || s.registeredDate); const expired = daysLeft <= 0; let daysClass = 'days-green'; if (daysLeft <= 5) daysClass = 'days-red'; else if (daysLeft <= 10) daysClass = 'days-yellow'; return '<div class="student-card zoom-box ' + (expired ? 'expired' : '') + '" style="animation-delay: ' + (i * 0.1) + 's"><div class="student-header"><div class="student-name">' + s.name + '</div><span class="student-status ' + (expired ? 'status-expired' : 'status-active') + '">' + (expired ? 'EXPIRED' : 'ACTIVE') + '</span></div><div class="student-details"><div class="detail-item"><strong>Age:</strong> ' + s.age + '</div><div class="detail-item"><strong>Contact:</strong> ' + s.contact + '</div><div class="detail-item"><strong>Email:</strong> ' + s.email + '</div><div class="detail-item"><strong>Joined:</strong> ' + new Date(s.approvedDate || s.registeredDate).toLocaleDateString() + '</div></div><div class="days-remaining ' + daysClass + '">' + (expired ? '⏰ Subscription Expired' : '⏳ ' + daysLeft + ' Days Remaining') + '</div><div class="action-btns"><button class="action-btn btn-view" onclick="viewScreenshot(' + s.id + ', false)">📸 View Screenshot</button><button class="action-btn btn-renew" onclick="renewStudent(' + s.id + ')">🔄 Renew (30 Days)</button><button class="action-btn btn-delete" onclick="deleteStudent(' + s.id + ')">🗑 Delete</button></div></div>'; }).join(''); } }
+        function approveStudent(id) { const pending = getPending(); const student = pending.find(s => s.id === id); if (student) { student.status = 'active'; student.approvedDate = new Date().toISOString(); const students = getStudents(); students.push(student); saveStudents(students); savePending(pending.filter(s => s.id !== id)); renderAdminDashboard(); } }
+        function rejectStudent(id) { if (confirm('Are you sure you want to reject this registration?')) { const pending = getPending(); savePending(pending.filter(s => s.id !== id)); renderAdminDashboard(); } }
+        function deleteStudent(id) { if (confirm('Are you sure you want to delete this student?')) { const students = getStudents(); saveStudents(students.filter(s => s.id !== id)); renderAdminDashboard(); } }
+        function renewStudent(id) { const students = getStudents(); const student = students.find(s => s.id === id); if (student) { student.approvedDate = new Date().toISOString(); saveStudents(students); renderAdminDashboard(); } }
+        setInterval(() => { if (document.getElementById('adminPage').classList.contains('active')) { renderAdminDashboard(); } }, 10000);
+    </script>
+</body>
+</html>
